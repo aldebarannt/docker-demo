@@ -1,0 +1,12 @@
+web-primary:
+	image: tomcat
+	ports:
+	 - "8081:8080"
+web-secondary:
+	image: tomcat
+	ports:
+	 - "8082:8080"
+nginx:
+	image: load-balancer
+	ports:
+	 - 9000:9000
