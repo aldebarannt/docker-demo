@@ -13,5 +13,7 @@ ADD logstash.conf /etc/
 
 WORKDIR /opt/logstash
 
+EXPOSE 9200 9292
+
 ENTRYPOINT [ "bin/logstash" ]
-CMD [ "--config=/etc/logstash.conf" ]
+CMD [ "--config=/etc/logstash.conf", "web --backend 'elasticsearch:///?local'" ]
