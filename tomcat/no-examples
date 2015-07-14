@@ -2,4 +2,6 @@ FROM tomcat
 
 RUN rm -Rf /usr/local/tomcat/webapps/examples
 
+VOLUME ["/usr/local/tomcat/logs"]
+
 ENTRYPOINT ["/usr/local/tomcat/bin/catalina.sh", "run"]
