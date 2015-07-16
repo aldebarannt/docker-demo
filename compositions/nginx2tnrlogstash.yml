@@ -34,6 +34,8 @@ redis:
 #    hostname: redis_primary
     volumes:
      - /var/log/redis
+    ports:
+     - "6379:6379"
 logstash:
     image: pblittle/docker-logstash
     ports:

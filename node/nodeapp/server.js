@@ -12,7 +12,7 @@ app.configure(function() {
   app.use(express.cookieParser('keyboard-cat'));
   app.use(express.session({
         store: new RedisStore({
-            host: process.env.REDIS_HOST || 'locahost',
+            host: process.env.REDIS_HOST || '192.168.99.100',
             port: process.env.REDIS_PORT || 6379,
             db: process.env.REDIS_DB || 0
         }),
