@@ -40,11 +40,9 @@ redisreplica:
     build: ../redis
     dockerfile: Alternative
     hostname: redis_replica
-    volumes:
-     - /var/log/redis
     entrypoint: redis-server --logfile /var/log/redis/redis-replica.log --slaveof redis_primary 6379
-    ports:
-     - "6379:6379"
+    links:
+     - redisprimary
 logstash:
     image: pblittle/docker-logstash
     ports:
