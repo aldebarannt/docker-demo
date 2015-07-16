@@ -25,7 +25,7 @@ app.configure(function() {
 });
 
 //GET KEY'S VALUE
-app.get('/redis/get/:key', function(req, response) {
+app.get('/redis/get/:key', function(req, res) {
 	client.get(req.params.key, function (error, val) {
 		if (error !== null) {
 			res.json({
@@ -41,7 +41,7 @@ app.get('/redis/get/:key', function(req, response) {
 });
  
 //SET KEY'S VALUE
-app.get('/redis/set/:key/:value', function(req, response) {
+app.get('/redis/set/:key/:value', function(req, res) {
 	client.set(req.params.key, req.params.value, function (error, result) {
 		if (error !== null) {
 			res.json({
