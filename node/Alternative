@@ -8,7 +8,6 @@ RUN mkdir -p /var/log/nodeapp
 ADD nodeapp /opt/nodeapp/
 
 WORKDIR /opt/nodeapp
-
 RUN npm install
 
 VOLUME [ "/var/log/nodeapp" ]
