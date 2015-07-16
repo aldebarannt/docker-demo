@@ -22,6 +22,8 @@ nodejs:
     dockerfile: Alternative
     links:
      - redis
+    ports:
+     - "3000:3000"
 redis:
     build: ../redis
     dockerfile: Dockerfile
