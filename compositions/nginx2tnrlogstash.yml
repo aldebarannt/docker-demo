@@ -33,7 +33,7 @@ redis:
     dockerfile: Alternative
     hostname: redis_primary
     volumes:
-     - /var/log/redis/
+     - /var/log/redis
 logstash:
     image: pblittle/docker-logstash
     ports:
