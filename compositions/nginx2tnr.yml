@@ -1,13 +1,13 @@
 webprimary:
     build: ../tomcat
-    dockerfile: no-examples
+    dockerfile: with-app
     links:
      - nodejs
     ports:
      - "8081:8080"
 websecondary:
     build: ../tomcat
-    dockerfile: no-examples
+    dockerfile: with-app
     links:
      - nodejs
     ports:
@@ -26,5 +26,5 @@ nodejs:
      - "3000:3000"
 redis:
     build: ../redis
-    dockerfile: Dockerfile
+    dockerfile: Alternative
     hostname: redis_primary
