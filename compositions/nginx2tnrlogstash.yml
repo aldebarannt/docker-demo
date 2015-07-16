@@ -31,7 +31,7 @@ nodejs:
 redis:
     build: ../redis
     dockerfile: Alternative
-    hostname: redis_primary
+#    hostname: redis_primary
     volumes:
      - /var/log/redis
 logstash:
