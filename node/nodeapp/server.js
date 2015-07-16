@@ -34,7 +34,7 @@ app.get('/redis/get/:key', function(req, res) {
 		} else {
 			res.json({
 				ok: true,
-				value: req.params.value
+				value: val
 			});
 		}
 	});
