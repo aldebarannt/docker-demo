@@ -30,7 +30,7 @@ nodejs:
      - "3000:3000"
 redis:
     build: ../redis
-    dockerfile: Dockerfile
+    dockerfile: Alternative
     hostname: redis_primary
     volumes:
      - /var/log/redis/
