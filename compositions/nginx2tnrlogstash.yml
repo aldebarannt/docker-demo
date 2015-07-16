@@ -57,4 +57,4 @@ logstash:
      - websecondary
      - nginx
      - nodejs
-     - redis
+     - redisprimary
