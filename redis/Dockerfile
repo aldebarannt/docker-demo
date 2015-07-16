@@ -36,10 +36,11 @@ RUN buildDeps='gcc libc6-dev make'; \
 
 RUN mkdir /data && chown redis:redis /data
 VOLUME /data
+VOLUME /var/log/redis
 WORKDIR /data
 
 COPY docker-entrypoint.sh /entrypoint.sh
 ENTRYPOINT ["/entrypoint.sh"]
 
 EXPOSE 6379
-CMD [ "redis-server" ]
+CMD [ "redis-server", "--logfile /var/log/redis/redis-server.log" ]

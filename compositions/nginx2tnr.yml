@@ -27,3 +27,4 @@ nodejs:
 redis:
     build: ../redis
     dockerfile: Dockerfile
+    hostname: redis_primary

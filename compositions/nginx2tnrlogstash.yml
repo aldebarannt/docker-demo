@@ -1,0 +1,49 @@
+nginx:
+    build: ../nginx
+    dockerfile: load-balancer
+    ports:
+     - "9000:9000"
+    volumes:
+     - /var/log/nginx
+webprimary:
+    build: ../tomcat
+    dockerfile: no-examples
+    ports:
+     - "8081:8080"
+    volumes:
+     - /usr/local/tomcat/logs
+websecondary:
+    build: ../tomcat
+    dockerfile: no-examples
+    ports:
+     - "8082:8080"
+    volumes:
+     - /usr/local/tomcat/logs
+nodejs:
+    build: ../node
+    dockerfile: Alternative
+    volumes:
+     - /var/log/nodeapp
+    links:
+     - redis
+    ports:
+     - "3000:3000"
+redis:
+    build: ../redis
+    dockerfile: Dockerfile
+    hostname: redis_primary
+    volumes:
+     - /var/log/redis/
+logstash:
+    image: pblittle/docker-logstash
+    ports:
+     - "9292:9292"
+     - "9200:9200"
+    volumes:
+     - /home/docker/demo/logstash:/opt/logstash/conf.d
+    volumes_from:
+     - webprimary
+     - websecondary
+     - nginx
+     - nodejs
+     - redis
