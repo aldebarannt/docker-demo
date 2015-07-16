@@ -24,10 +24,9 @@ app.configure(function() {
 });
 
 var client = redis.createClient();//CREATE REDIS CLIENT
-var router = express.Router();
  
 //GET KEY'S VALUE
-router.get('/redis/get/:key', function(req, response) {
+app.get('/redis/get/:key', function(req, response) {
 	client.get(req.params.key, function (error, val) {
 		if (error !== null) console.log("error: " + error);
 		else {
@@ -37,7 +36,7 @@ router.get('/redis/get/:key', function(req, response) {
 });
  
 //SET KEY'S VALUE
-router.get('/redis/set/:key/:value', function(req, response) {
+app.get('/redis/set/:key/:value', function(req, response) {
 	client.set(req.params.key, req.params.value, function (error, result) {
 		if (error !== null) console.log("error: " + error);
 		else {
@@ -46,8 +45,6 @@ router.get('/redis/set/:key/:value', function(req, response) {
 	});
 });
  
-app.use('/', router);
-
 app.get('/', function(req, res) {
   res.json({
     status: "ok"
