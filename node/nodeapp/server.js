@@ -6,15 +6,16 @@ var express = require('express'),
     server = require('http').createServer(app);
 
 var logFile = fs.createWriteStream('/var/log/nodeapp/nodeapp.log', {flags: 'a'});
+var client = redis.createClient();
 
 app.configure(function() {
   app.use(express.logger({stream: logFile}));
   app.use(express.cookieParser('keyboard-cat'));
   app.use(express.session({
         store: new RedisStore({
-            host: '192.168.99.100',
-            port: 6379,
-            db: 0
+            host: process.env.REDIS_HOST || '192.168.99.100',
+            port: process.env.REDIS_PORT || 6379,
+            client: client
         }),
         cookie: {
             expires: false,
@@ -23,8 +24,6 @@ app.configure(function() {
     }));
 });
 
-var client = redis.createClient();//CREATE REDIS CLIENT
- 
 //GET KEY'S VALUE
 app.get('/redis/get/:key', function(req, response) {
 	client.get(req.params.key, function (error, val) {
