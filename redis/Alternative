@@ -6,7 +6,7 @@ RUN add-apt-repository ppa:chris-lea/redis-server
 RUN apt-get -yqq update 
 RUN apt-get -yqq install redis-server redis-tools 
 
-RUN echo 'loglevel debug' >> /etc/redis/redis.conf
+ADD redis.conf /etc/redis
 
 VOLUME [ "/var/lib/redis", "/var/log/redis" ] 
 
