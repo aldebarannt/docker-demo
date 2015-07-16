@@ -38,9 +38,8 @@ redisprimary:
      - "6379:6379"
 redisreplica:
     build: ../redis
-    dockerfile: Alternative
+    dockerfile: Replica
     hostname: redis_replica
-    entrypoint: /usr/bin/redis-server --logfile /var/log/redis/redis-replica.log --slaveof redis_primary 6379
     links:
      - redisprimary
 logstash:
