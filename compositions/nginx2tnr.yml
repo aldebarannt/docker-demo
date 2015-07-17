@@ -5,6 +5,8 @@ webprimary:
      - nodejs
     ports:
      - "8081:8080"
+    volumes:
+     - /home/docker/demo/tomcat/external-app:/usr/local/tomcat/webapps/external-app
 websecondary:
     build: ../tomcat
     dockerfile: with-app
@@ -12,6 +14,8 @@ websecondary:
      - nodejs
     ports:
      - "8082:8080"
+    volumes:
+     - /home/docker/demo/tomcat/external-app:/usr/local/tomcat/webapps/external-app
 nginx:
     build: ../nginx
     dockerfile: load-balancer

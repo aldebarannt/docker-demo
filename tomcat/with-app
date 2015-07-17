@@ -1,5 +1,7 @@
 FROM tomcat
 
+ENV JAVA_OPTS="$JAVA_OPTS -Djava.security.egd=file:/dev/./urandom" 
+
 RUN mkdir /usr/local/tomcat/webapps/app
 
 ADD app /usr/local/tomcat/webapps/app

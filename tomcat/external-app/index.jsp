@@ -4,7 +4,7 @@
 </head>
 <body>
 
-External app
+External app 2
 
 </body>
 </html>
